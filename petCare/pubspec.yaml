@@ -63,6 +63,9 @@ flutter:
   assets:
     - assets/images/Eevee.jpg
     - assets/images/logoPCApp.png
+    - assets/images/logoPrincipal.png
+    - assets/images/pawsTop.png
+    - assets/images/pawsButton.png
     
   fonts:
     - family: Montserrat

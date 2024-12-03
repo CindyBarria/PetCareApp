@@ -20,7 +20,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     super.initState();
     nombreController.text = widget.notaParaModificar.nombre;
     descriptionController.text = widget.notaParaModificar.descripcion;
-    imagePathController.text = widget.notaParaModificar.imagePath ?? ''; // Si es null, que esté vacío
+    imagePathController.text = widget.notaParaModificar.imagePath ?? '';
   }
 
   @override
