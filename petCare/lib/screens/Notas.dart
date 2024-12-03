@@ -18,12 +18,6 @@ class NotesScreenState extends State<NotesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         actions: [
-          IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () => openNoteAddScreen()
-          ),
-        ],
         title: getLogo(),
       ),
       backgroundColor: const Color(0xFFFFF7EB),
@@ -36,10 +30,11 @@ class NotesScreenState extends State<NotesScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, // Alineación del título
       children: [
+        
         const Padding(
           padding: EdgeInsets.all(16.0 ),
           child: Text(
-            "Mas",
+            "Mascotas",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.normal,
@@ -47,6 +42,7 @@ class NotesScreenState extends State<NotesScreen> {
               fontFamily: 'Montserrat',
             ),
           ),
+          
         ),
         Expanded( // Para que el ListView ocupe el espacio restante
           child: widget.notes.isEmpty

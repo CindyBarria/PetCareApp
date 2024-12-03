@@ -11,6 +11,7 @@ class NoteEditScreen extends StatefulWidget {
 
 class _NoteEditScreenState extends State<NoteEditScreen> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController edadController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController imagePathController = TextEditingController();
 
@@ -35,6 +36,10 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
             TextField(
               controller: nombreController,
               decoration: const InputDecoration(labelText: 'Nombre'),
+            ),
+            TextField(
+              controller: edadController,
+              decoration: const InputDecoration(labelText: 'Edad'),
             ),
             TextField(
               controller: descriptionController,
@@ -67,11 +72,13 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
   void modificarNota(BuildContext context) {
     String notaModificada = nombreController.text;
+    String nuevaEdad = edadController.text;
     String descripcionModificada = descriptionController.text;
     String? nuevaImagen = imagePathController.text.isNotEmpty ? imagePathController.text : null;
 
     Notas miNotaModificada = Notas(
       nombre: notaModificada,
+      edad:nuevaEdad,
       descripcion: descripcionModificada,
       imagePath: nuevaImagen,
     );
