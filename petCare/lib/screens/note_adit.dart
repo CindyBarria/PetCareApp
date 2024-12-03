@@ -11,6 +11,7 @@ class NoteEditScreen extends StatefulWidget {
 
 class _NoteEditScreenState extends State<NoteEditScreen> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController edadController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController imagePathController = TextEditingController();
 
@@ -19,14 +20,14 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     super.initState();
     nombreController.text = widget.notaParaModificar.nombre;
     descriptionController.text = widget.notaParaModificar.descripcion;
-    imagePathController.text = widget.notaParaModificar.imagePath ?? ''; // Si es null, que esté vacío
+    imagePathController.text = widget.notaParaModificar.imagePath ?? '';
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(     
+    return Scaffold(
       appBar: AppBar(
-        title:getLogo(),
+        title: getLogo(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -37,12 +38,17 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
+              controller: edadController,
+              decoration: const InputDecoration(labelText: 'Edad'),
+            ),
+            TextField(
               controller: descriptionController,
               decoration: const InputDecoration(labelText: 'Descripción'),
             ),
             TextField(
               controller: imagePathController,
-              decoration: const InputDecoration(labelText: 'Ruta de la imagen (opcional)'),
+              decoration: const InputDecoration(
+                  labelText: 'Ruta de la imagen (opcional)'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -57,7 +63,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     );
   }
 
-    Widget getLogo() {
+  Widget getLogo() {
     return Center(
       child: Image.asset(
         'assets/images/logoPCApp.png',
@@ -67,15 +73,18 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
   void modificarNota(BuildContext context) {
     String notaModificada = nombreController.text;
+    String nuevaEdad = edadController.text;
     String descripcionModificada = descriptionController.text;
-    String? nuevaImagen = imagePathController.text.isNotEmpty ? imagePathController.text : null;
+    String? nuevaImagen =
+        imagePathController.text.isNotEmpty ? imagePathController.text : null;
 
     Notas miNotaModificada = Notas(
       nombre: notaModificada,
+      edad: nuevaEdad,
       descripcion: descripcionModificada,
       imagePath: nuevaImagen,
     );
-    
+
     Navigator.of(context).pop(miNotaModificada);
   }
 }

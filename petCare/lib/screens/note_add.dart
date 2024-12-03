@@ -1,18 +1,28 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_application_1/model/notas.dart';
 
-class NoteAddScreen extends StatelessWidget {
-  NoteAddScreen({super.key});
+class NoteAddScreen extends StatefulWidget {
+  const NoteAddScreen({super.key});
 
+  @override
+  _NoteAddScreenState createState() => _NoteAddScreenState();
+}
+
+class _NoteAddScreenState extends State<NoteAddScreen> {
   TextEditingController nombreController = TextEditingController();
+  TextEditingController edadController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController imagePathController = TextEditingController(); // Agregamos un campo para la ruta de la imagen
+  File? _selectedImage;
+
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(     
+    return Scaffold(
       appBar: AppBar(
-        title:getLogo(),
+        title: getLogo(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -23,12 +33,26 @@ class NoteAddScreen extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
+              controller: edadController,
+              decoration: const InputDecoration(labelText: 'Edad'),
+            ),
+            TextField(
               controller: descriptionController,
               decoration: const InputDecoration(labelText: 'Descripción'),
             ),
-            TextField(
-              controller: imagePathController,
-              decoration: const InputDecoration(labelText: 'Ruta de la imagen (opcional)'),
+            const SizedBox(height: 20),
+            _selectedImage != null
+                ? Image.file(
+                    _selectedImage!,
+                    height: 150,
+                    width: 150,
+                    fit: BoxFit.cover,
+                  )
+                : const Text('No se ha seleccionado ninguna imagen'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _pickImage,
+              child: const Text('Seleccionar Imagen'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -50,18 +74,28 @@ class NoteAddScreen extends StatelessWidget {
       ),
     );
   }
-  
+
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _selectedImage = File(image.path);
+      });
+    }
+  }
+
   void agregarNuevaNota(BuildContext context) {
     String nuevaNota = nombreController.text;
+    String nuevaEdad = edadController.text;
     String nuevaDescripcion = descriptionController.text;
-    String? nuevaImagen = imagePathController.text.isNotEmpty ? imagePathController.text : null; // Si no hay ruta de imagen, se establece como null
+    String? nuevaImagen = _selectedImage?.path;
 
     Notas miNuevaNota = Notas(
       nombre: nuevaNota,
+      edad: nuevaEdad,
       descripcion: nuevaDescripcion,
       imagePath: nuevaImagen,
     );
-    
     Navigator.of(context).pop(miNuevaNota);
   }
 }
