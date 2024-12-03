@@ -25,9 +25,9 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(     
+    return Scaffold(
       appBar: AppBar(
-        title:getLogo(),
+        title: getLogo(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -47,7 +47,8 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
             ),
             TextField(
               controller: imagePathController,
-              decoration: const InputDecoration(labelText: 'Ruta de la imagen (opcional)'),
+              decoration: const InputDecoration(
+                  labelText: 'Ruta de la imagen (opcional)'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -62,7 +63,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     );
   }
 
-    Widget getLogo() {
+  Widget getLogo() {
     return Center(
       child: Image.asset(
         'assets/images/logoPCApp.png',
@@ -74,15 +75,16 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     String notaModificada = nombreController.text;
     String nuevaEdad = edadController.text;
     String descripcionModificada = descriptionController.text;
-    String? nuevaImagen = imagePathController.text.isNotEmpty ? imagePathController.text : null;
+    String? nuevaImagen =
+        imagePathController.text.isNotEmpty ? imagePathController.text : null;
 
     Notas miNotaModificada = Notas(
       nombre: notaModificada,
-      edad:nuevaEdad,
+      edad: nuevaEdad,
       descripcion: descripcionModificada,
       imagePath: nuevaImagen,
     );
-    
+
     Navigator.of(context).pop(miNotaModificada);
   }
 }

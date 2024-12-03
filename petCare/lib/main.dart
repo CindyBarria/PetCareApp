@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/bienvenida', 
       routes: {
         '/bienvenida': (context) => const Bienvenida(),
-        '/principal': (context) =>NotesScreen(notes: miListaDeNotas),
+        '/principal': (context) => NotesScreen(notes: miListaDeNotas),
       },
       home: NotesScreen(notes: miListaDeNotas),
       debugShowCheckedModeBanner: false,

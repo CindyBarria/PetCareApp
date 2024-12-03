@@ -14,9 +14,9 @@ class _NoteAddScreenState extends State<NoteAddScreen> {
   TextEditingController nombreController = TextEditingController();
   TextEditingController edadController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  File? _selectedImage; // Imagen seleccionada por el usuario
+  File? _selectedImage;
 
-  final ImagePicker _picker = ImagePicker(); // Inicializamos el selector de imágenes
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -75,23 +75,19 @@ class _NoteAddScreenState extends State<NoteAddScreen> {
     );
   }
 
-  /// Método para seleccionar una imagen
   Future<void> _pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery); // Abrir la galería
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
-        _selectedImage = File(image.path); // Guardar la imagen seleccionada
+        _selectedImage = File(image.path);
       });
     }
   }
 
-  /// Método para guardar la nota
   void agregarNuevaNota(BuildContext context) {
     String nuevaNota = nombreController.text;
     String nuevaEdad = edadController.text;
     String nuevaDescripcion = descriptionController.text;
-
-    // Si se seleccionó una imagen, guarda su ruta. Si no, establece null.
     String? nuevaImagen = _selectedImage?.path;
 
     Notas miNuevaNota = Notas(
@@ -100,8 +96,6 @@ class _NoteAddScreenState extends State<NoteAddScreen> {
       descripcion: nuevaDescripcion,
       imagePath: nuevaImagen,
     );
-
-    // Volver a la pantalla anterior con la nueva nota
     Navigator.of(context).pop(miNuevaNota);
   }
 }

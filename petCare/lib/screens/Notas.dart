@@ -27,8 +27,7 @@ class NotesScreenState extends State<NotesScreen> {
 
   Widget getPet() {
     return Column(
-      mainAxisAlignment:
-          MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,9 +77,7 @@ class NotesScreenState extends State<NotesScreen> {
                                     color: Colors.grey,
                                   ),
                           ),
-                          const SizedBox(
-                              width:
-                                  16),
+                          const SizedBox(width: 16),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,8 +121,8 @@ class NotesScreenState extends State<NotesScreen> {
                                     openNoteEditScreen(widget.notes[index]),
                               ),
                               IconButton(
-                                icon:
-                                    const Icon(Icons.delete, color: Color(0xFFFFAE34)),
+                                icon: const Icon(Icons.delete,
+                                    color: Color(0xFFFFAE34)),
                                 onPressed: () => setState(
                                     () => widget.notes.removeAt(index)),
                               ),
