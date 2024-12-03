@@ -39,7 +39,7 @@ class NotesScreenState extends State<NotesScreen> {
         const Padding(
           padding: EdgeInsets.all(16.0 ),
           child: Text(
-            "Mascotas",
+            "Mas",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.normal,
@@ -93,9 +93,18 @@ class NotesScreenState extends State<NotesScreen> {
                             ),
                           ),
                           const SizedBox(height: 4),
-                          // Mostrar edad solo si está disponible
                           Text(
-                            ",${widget.notes[index].descripcion}",
+                            widget.notes[index].edad!,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat',
+                            ),
+                          ),
+                     
+                          Text(
+                            widget.notes[index].descripcion,
                             style: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
