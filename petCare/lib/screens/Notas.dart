@@ -62,7 +62,7 @@ class NotesScreenState extends State<NotesScreen> {
                         children: [
                           ClipRRect(
                             borderRadius:
-                                BorderRadius.circular(8), // Bordes redondeados
+                                BorderRadius.circular(8),
                             child: widget.notes[index].imagePath != null &&
                                     widget.notes[index].imagePath!.isNotEmpty
                                 ? Image.asset(
@@ -111,7 +111,7 @@ class NotesScreenState extends State<NotesScreen> {
                               ],
                             ),
                           ),
-                          // Botones de acción (Editar y Eliminar)
+                          // Botones Editar y Eliminar
                           Row(
                             children: [
                               IconButton(

@@ -8,14 +8,11 @@ class Bienvenida extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFFF7EB),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Image.asset('assets/images/pawsTop.png'),
-          ),
-          const SizedBox(height: 100),
-          Center(
+           Image.asset('assets/images/pawsTop.png'),
+          
+           Center(
             child: Image.asset('assets/images/logoPrincipal.png'),
           ),
           TextButton(
@@ -23,7 +20,7 @@ class Bienvenida extends StatelessWidget {
               Navigator.pushReplacementNamed(context, '/principal');
             },
             style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
+              padding: EdgeInsets.zero, 
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
@@ -35,11 +32,8 @@ class Bienvenida extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: Container()),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Image.asset('assets/images/pawsButton.png'),
-          ),
+          Image.asset('assets/images/pawsButton.png'),
+           
         ],
       ),
     );

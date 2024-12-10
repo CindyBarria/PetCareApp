@@ -19,6 +19,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
   void initState() {
     super.initState();
     nombreController.text = widget.notaParaModificar.nombre;
+    edadController.text = widget.notaParaModificar.edad ;
     descriptionController.text = widget.notaParaModificar.descripcion;
     imagePathController.text = widget.notaParaModificar.imagePath ?? '';
   }

@@ -59,7 +59,7 @@ class _NoteAddScreenState extends State<NoteAddScreen> {
               onPressed: () {
                 agregarNuevaNota(context);
               },
-              child: const Text('Guardar Nota'),
+              child: const Text('Guardar mascota'),
             ),
           ],
         ),
